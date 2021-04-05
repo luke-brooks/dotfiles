@@ -1,0 +1,64 @@
+What is hammerspoon?
+    It is a tool for automating MacOS desktop functionality using Lua scripts.
+
+So what does that mean?
+    It means that tedious user actions can be automated to make it easier for you to actually use your Mac.
+    Have you ever tried to drag an open window across multiple monitors? 
+        And then try to size it to only take up half of the screen?
+    How about flipping to your Slack messages but seeing 12 other apps before in the CMD+Tab list? 
+        And then you accidentally hit Tab too many times and pass it up?
+    These small tasks can be quite annoying and they can end up slowing you down rather frequently.
+
+So how does hammerspoon fix this?
+    Hammerspoon integrates with a MacOS API that allows you to control its functionality. 
+        It also provides the ability to tie these functions to a combination of keyboard key-presses.
+    For example: if you wanted to move a Terminal window over two monitors to the right, 
+        you can bind a key combo such as Control+Option+Right arrow to a hammerspoon function that moves the active app window
+            to the next monitor in your Displays list, & then simply press it twice.
+        You could also bind the Control+Option+Home combo to resize the active window to be full screen.
+        If you defined the combo Control+Option+X to open a new Terminal window, you could pair it with the previous combos
+            to open the Terminal app, move it to a specific monitor and size it in the most usable fashion without having to ever touch your mouse.
+                A couple of key presses, a couple of quick Terminal commands, 
+                    and you can let that annoying UI deploy run in the corner of your extra monitor for the next 20 minutes.
+    These key combos and hammerspoon functions can also be used to improve (rather replace) the CMD+Tab App Switcher.
+        One of the most useful hammerspoon functions I've found is called "launchOrFocus". 
+            The only parameter you need to pass it is the name of an application and it will bring that app to the front of your screen if it's already open.
+                If the app isn't open, the function does just as it's named and launches that app for you.
+            I admittedly have a ton of these key-combo-app-focus rules defined, but there are 3 that I find particularly useful:
+                - Slack
+                - Email
+                - Calendar
+                And the keys for them are all right next to each other on the keyboard (A, S, D)
+                I love the ability to flip between all of my communication apps quickly and easily.
+                And the best part?
+                    That App Switching bar that you see with CMD+Tab: doesn't show up when using the "launchOrFocus".
+                    So pressing Control+Option+A immediately brings Slack to the front of my screen.
+                        No animations. No searching for it in a list of icons. Just Slack.
+    Choosing your combos can be tough.
+        Hammerspoon key bindings have some rules to them:
+            - they should use at least one modifier key (shift, CMD, option, control)
+            - and the will need an action key (digits, alpha characters, left, right, up, down, spacebar)
+        The tricky thing is you don't want to overwrite already existing key combos just to open your email.
+            Unless you will never need to use CMD+a to select all ever again...
+        I'm personally a fan of using the "HYPER" key idea and not just cuz it sounds cool.
+            The HYPER key is the simultaneous press of all 4 modifers: CMD/Win, Control, Option, Shift
+            For one, this modifier is too ridiculous to be built into any sane application (side-eye at you MS Office on Win10) so you won't have conflicting functionality.
+            For two, this combo can be simulated through a single keypress so you don't actually have to become a hand contortionist.
+                There are several ways to achieve this that are out of scope of hammerspoon that I will not dive into:
+                    - Karabiner
+                    - Keyboard firmware 
+
+What else can it do?
+    Opening, moving, and resizing apps is just a fraction of hammerspoon (not even its final form)
+    Other features include:
+        - Creating custom icons in the Mac toolbar
+        - Attaching custom menus to your toolbar icons
+        - Display custom Notifications (similar to ones you see when you get a Slack message) 
+        - Monitoring connected bluetooth devices and controlling their settings
+        - Monitoring network interfaces for changes in internet or VPN connectivity
+    As we saw with the key combos, these features are most useful when combined.
+    Some of my personal implementations are:
+        - A monitor that senses when my headset is connected via bluetooth and displays a custom icon in the Toolbar for visual confirmation.
+            It also removes the icon if the headset becomes disconnected making it easy to tell if I'm ready for meetings.
+        - A monitor that watches for internet connection via ethernet cable and shows or hides a custom Toolbar icon depending on the status.
+        - A Notification that pops up with an IP address after I connect to the Corporate VPN and copies the IP to my clipboard.
