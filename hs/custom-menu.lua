@@ -14,18 +14,18 @@ function reloadMenu ()
                 end
             end
         },
-        {
-            title = 'Temp Key Binding',
-            checked = tempBinding ~= nil,
-            fn = function()
-                if (tempBinding ~= nil) then
-                    local msg = 'Temp binding is set to: ' .. tempBinding:name() .. ' on HYPER + ' .. tempKey
-                    hs.notify.new({title='Temp Key Binding', informativeText=msg}):send()
-                else
-                    hs.notify.new({title='Temp Key Binding', informativeText='No App set to temp binding.'}):send()
-                end
-            end
-        },
+        -- {
+        --     title = 'Temp Key Binding',
+        --     checked = tempBinding ~= nil,
+        --     fn = function()
+        --         if (tempBinding ~= nil) then
+        --             local msg = 'Temp binding is set to: ' .. tempBinding:name() .. ' on HYPER + ' .. tempKey
+        --             hs.notify.new({title='Temp Key Binding', informativeText=msg}):send()
+        --         else
+        --             hs.notify.new({title='Temp Key Binding', informativeText='No App set to temp binding.'}):send()
+        --         end
+        --     end
+        -- },
         {
             title = "-" -- separator
         },

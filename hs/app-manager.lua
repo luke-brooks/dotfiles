@@ -2,13 +2,10 @@
 local function setAppManagerHotkeys (hotkeys, modifier)
   for key, app in pairs(hotkeys) do
     hs.hotkey.bind(modifier, key, function()
-        hs.printf('app name is %s', app)
       hs.application.launchOrFocus(app)
       sleep(0.1)
       appInstance = hs.application.find(app)
-      hs.printf('app is %s', appInstance)
       if (appInstance ~= nil) then
-        hs.printf('window is %s', appInstance:focusedWindow())
         centerMouseCursor(appInstance:focusedWindow():screen(), appInstance:focusedWindow())
       end
     end)
@@ -23,14 +20,14 @@ hs.notify.new({title='Hammerspoon', informativeText='Config loaded breh'}):send(
 
 -- app manager
 local appHyperKeys = {
-  a = 'Slack', -- this doesnt always have a mainWindow()
+  a = 'Slack',
   s = 'Gmail',
   d = 'Google Calendar',
+  f = 'Sublime Text',
   x = 'iTerm',
   c = 'Google Chrome',
-  v = 'Visual Studio Code', -- the name becomes just 'Code' after the app has been launched wtf
-  u = 'Spotify',
---   y = 'zoom.us'
+  v = 'Code',
+  u = 'Spotify'
 }
 setAppManagerHotkeys(appHyperKeys, HYPER)
 
@@ -42,20 +39,20 @@ setAppManagerHotkeys(appMehKeys, MEH)
 
 -- set temporary hotkey for designated app
 -- these are used in custom-menu.lua
-tempBinding = nil
-tempKey = 'f'
-hs.hotkey.bind(HYPER, '6', function()
-  tempBinding = hs.window.focusedWindow():application()
-  local msg = 'Setting temp binding to: ' .. tempBinding:name() .. ' on HYPER + ' .. tempKey
-  hs.notify.new({title='Temp Key Binding', informativeText=msg}):send()
-  reloadMenu()
-end)
-
-hs.hotkey.bind(HYPER, tempKey, function()
-  if (tempBinding ~= nil) then
-    hs.application.launchOrFocus(tempBinding:name())
-  end
-end)
+-- disabling temp binding key because its always set to sublime text lol
+-- tempBinding = nil
+-- tempKey = 'f'
+-- hs.hotkey.bind(HYPER, '6', function()
+--   tempBinding = hs.window.focusedWindow():application()
+--   local msg = 'Setting temp binding to: ' .. tempBinding:name() .. ' on HYPER + ' .. tempKey
+--   hs.notify.new({title='Temp Key Binding', informativeText=msg}):send()
+--   reloadMenu()
+-- end)
+-- hs.hotkey.bind(HYPER, tempKey, function()
+--   if (tempBinding ~= nil) then
+--     hs.application.launchOrFocus(tempBinding:name())
+--   end
+-- end)
 
 -- lock screen
 hs.hotkey.bind(MEH, '6', function()
@@ -69,6 +66,7 @@ end)
 
 -- also used in monitor-manager.lua
 function openLofiHipHopChrome ()
+    -- chrome = hs.application.find('Brave') -- i want to switch to a non-chrome browser to avoid this tab getting in the way
     chrome = hs.application.find('Chrome')
     lofi = chrome:findWindow('lofi hip hop')
     if (lofi == nil) then
