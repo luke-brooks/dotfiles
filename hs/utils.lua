@@ -25,15 +25,25 @@ end
 -- move mouse cursor to center of desired monitor
 function centerMouseCursor (targetScreen, targetWindow)
     if (targetScreen ~= nil) then
-        centerPoint = {}
-        if (targetWindow ~= nil) then
+        local centerPoint = {}
+        -- if (targetWindow ~= nil) then
             -- this is not accounting for window position & is off when window is not full screen
-            centerPoint = targetWindow:size().center
-        else
-            screenSize = targetScreen:currentMode()
+            -- centerPoint = targetWindow:size().center
+
+            -- local windowTopLeftPoint = targetWindow:topLeft()
+            -- hs.printf('window location point')
+            -- printTable(windowTopLeftPoint)
+            -- local windowSize = targetWindow:size().center
+            -- hs.printf('window center point')
+            -- printTable(windowSize)
+            -- centerPoint['y'] = windowTopLeftPoint['y'] + windowSize['y']
+            -- centerPoint['x'] = windowTopLeftPoint['x'] + windowSize['x']
+            -- centerPoint['x'] = screenSize['w'] / 2
+        -- else
+            local screenSize = targetScreen:currentMode()
             centerPoint['y'] = screenSize['h'] / 2
             centerPoint['x'] = screenSize['w'] / 2
-        end
+        -- end
         hs.mouse.setRelativePosition(centerPoint, targetScreen)
     end
 end
