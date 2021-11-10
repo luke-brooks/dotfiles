@@ -15,18 +15,23 @@ customRequire('window-manager')
 -- import watcher scripts
 customRequire('audio-watcher')
 customRequire('battery-watcher')
-customRequire('caffeinate-watcher')
 customRequire('network-watcher')
--- import miscellaneous scripts
-customRequire('bluetooth-util')
 customRequire('custom-menu')
+
+
+-- not really using the bt stuff right now
+-- customRequire('bluetooth-util')
+-- customRequire('caffeinate-watcher')
 
 ----------------------------
 -- TODO
 ----------------------------
 
+-- toggle spotify play/pause when leaving/entering a zoom meeting
 -- find a more reliable way to identify monitors
 --   the IDs frequently get switched for some reason
+
+-- sense when i have been connected to prod vpn for more than hour
 
 ----------------------------
 -- Useful Links

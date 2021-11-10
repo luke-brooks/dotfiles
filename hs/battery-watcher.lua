@@ -4,7 +4,7 @@ local chargingingIcon = nil
 
 function batteryUsage ()
     -- TODO: show error when power is below 15%
-    if (hs.battery.percentage() < 90) then
+    if (hs.battery.percentage() < 70) then
         muhAmps = hs.battery.amperage()
         if (muhAmps < 0) then
             chargingingIcon = removeIcon(chargingingIcon)
