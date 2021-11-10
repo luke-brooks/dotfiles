@@ -7,8 +7,8 @@ function swapMonitorIds ()
     local temp = STANDARD_MONITOR_DETAILS[1]
     STANDARD_MONITOR_DETAILS[1] = VERTICAL_MONITOR_DETAILS[1]
     VERTICAL_MONITOR_DETAILS[1] = temp
-    determineMonitorConnection()
-    reverseScreenOrder()
+    -- determineMonitorConnection()
+    -- reverseScreenOrder()
 end
 
 function applyMonitorSettings (settings)
@@ -37,6 +37,6 @@ end
 -- sensing this on config reload severely slows down hammerspoon
 -- determineMonitorConnection()
 
-monitorWatcher = hs.screen.watcher.new(determineMonitorConnection)
-monitorWatcher:start()
+-- monitorWatcher = hs.screen.watcher.new(determineMonitorConnection)
+-- monitorWatcher:start()
 
