@@ -13,6 +13,8 @@ LAPTOP_MIC = 'BuiltInMicrophoneDevice'
 WIRELESS_MIC = 'AppleUSBAudioEngine:Antlion Audio:Antlion Wireless Microphone:14123220:1'
 SENN_MIC = '00-16-94-3a-85-49:input'
 SENN_HEADPHONES = '00-16-94-3a-85-49:output'
+LOGI_HEADSET_OUTPUT = 'AppleUSBAudioEngine:Logitech:Logitech Wireless Headset:C0288D589BCC:2'
+LOGI_HEADSET_INPUT = 'AppleUSBAudioEngine:Logitech:Logitech Wireless Headset:C0288D589BCC:1'
 
 -- monitor details tables
 -- table format: id, rotation angle, width, height, resolution mode, frequency, depth
