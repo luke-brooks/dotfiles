@@ -54,3 +54,10 @@ customRequire('custom-menu')
 -- ascii icon drawing guide
 -- http://cocoamine.net/blog/2015/03/20/replacing-photoshop-with-nsstring/
 
+
+----------------------------
+-- SETUP INFO
+----------------------------
+
+-- Accessibility needs enabled for Hammerspoon.app
+-- Notification Settings needs to have Hammerspoon.app "allow" desktop notifications, otherwise hs.notify.send will not work
