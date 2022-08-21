@@ -27,6 +27,8 @@ customRequire('custom-menu')
 -- TODO
 ----------------------------
 
+-- Multi-payload clipboard for easily pasting several different snippets without having to re-copy anything
+
 -- toggle spotify play/pause when leaving/entering a zoom meeting
 -- find a more reliable way to identify monitors
 --   the IDs frequently get switched for some reason
