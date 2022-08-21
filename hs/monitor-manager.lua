@@ -15,6 +15,9 @@ function applyMonitorSettings (settings)
     local monitor = hs.screen.find(settings[1])
     -- setMode can be used to set scaling preference via height & width
     if (monitor ~= nil) then
+        -- these monitor config changes dont seem to hold
+        -- they return "false" indicating a failed status change
+        -- im assuming it is due to some sort of permissions error but unsure how to pin it down
         monitor:rotate(settings[2])
         monitor:setMode(settings[3], settings[4], settings[5], settings[6], settings[7])
     end
