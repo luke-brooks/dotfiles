@@ -2,14 +2,14 @@ local headsetIcon = nil
 
 local function updateInputSettings(headsetName)
     local builtIn = hs.audiodevice.findInputByUID(LAPTOP_MIC)
-    local senn_headsetInput = hs.audiodevice.findInputByUID(SENN_MIC)
+    -- local senn_headsetInput = hs.audiodevice.findInputByUID(SENN_MIC)
     local logi_headsetInput = hs.audiodevice.findInputByUID(LOGI_HEADSET_INPUT)
 
     if (headsetName == 'senn') then
         builtIn:setDefaultInputDevice()
         builtIn:setInputVolume(50)
-        senn_headsetInput:setInputMuted(true)
-        senn_headsetInput:setInputVolume(0)
+        -- senn_headsetInput:setInputMuted(true)
+        -- senn_headsetInput:setInputVolume(0)
     elseif (headsetName == 'logi') then
         builtIn:setInputMuted(true)
         builtIn:setInputVolume(50)
@@ -26,11 +26,12 @@ local function updateInputSettings(headsetName)
     end
 end
 
-local function senseHeadset()
+function senseHeadset()
     local result = ''
     local headset = ''
 
-    local senn_headset = hs.audiodevice.findOutputByUID(SENN_HEADPHONES)
+    -- local senn_headset = hs.audiodevice.findOutputByUID(SENN_HEADPHONES_UID) -- the mac address sometimes is capitalized & sometimes not...
+    local senn_headset = hs.audiodevice.findOutputByName(SENN_HEADPHONES_NAME)
     local logi_headset = hs.audiodevice.findOutputByUID(LOGI_HEADSET_OUTPUT)
 
     if (senn_headset ~= nil) then
