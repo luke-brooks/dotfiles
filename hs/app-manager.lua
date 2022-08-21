@@ -74,7 +74,7 @@ function openLofiHipHopChrome ()
         sleep(0.5) -- wait for new window
         lofi = chrome:findWindow('New Tab')
         lofi:focus()
-        hs.eventtap.keyStrokes('https://www.youtube.com/watch?v=5qap5aO4i9A')
+        hs.eventtap.keyStrokes(LOFI_HIPHOP_YOUTUBE_URL)
         hs.eventtap.keyStroke({}, 'return')
     end
     return lofi

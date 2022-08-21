@@ -22,3 +22,6 @@ BUILT_IN_ONLY = {69734662, 0, 1792, 1120, 2, 59.0, 4.0}
 BUILT_IN_DETAILS = {69734662, 0, 1152, 720, 2, 59.0, 4.0}
 STANDARD_MONITOR_DETAILS = {'(1)', 0, 2560, 1440, 2, 24.0, 4.0}
 VERTICAL_MONITOR_DETAILS = {'(2)', 270, 1440, 2560, 2, 24.0, 4.0}
+
+-- app variables
+LOFI_HIPHOP_YOUTUBE_URL = 'https://www.youtube.com/watch?v=jfKfPfyJRdk'
