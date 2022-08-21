@@ -1,7 +1,7 @@
 
+SHARED_VERTICAL_MONITOR = nil -- shared to ensure monitor swaps reach other scripts
 builtInMonitor = nil
 standardMonitor = nil
-verticalMonitor = nil
 
 function swapMonitorIds ()
     local temp = STANDARD_MONITOR_DETAILS[1]
@@ -27,7 +27,7 @@ function determineMonitorConnection ()
         hs.notify.new({title='Monitors', informativeText='Full Monitor Setup'}):send()
         builtInMonitor = applyMonitorSettings(BUILT_IN_DETAILS)
         standardMonitor = applyMonitorSettings(STANDARD_MONITOR_DETAILS)
-        verticalMonitor = applyMonitorSettings(VERTICAL_MONITOR_DETAILS)
+        SHARED_VERTICAL_MONITOR = applyMonitorSettings(VERTICAL_MONITOR_DETAILS)
     else
         hs.notify.new({title='Monitors', informativeText='Laptop Only'}):send()
         builtInMonitor = applyMonitorSettings(BUILT_IN_ONLY)

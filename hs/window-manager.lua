@@ -3,7 +3,8 @@
 hs.window.animationDuration = 0
 screenReverse = false
 
-local vertical_monitor = hs.screen.find(VERTICAL_MONITOR_DETAILS[1])
+vertical_monitor = SHARED_VERTICAL_MONITOR
+
 local verticalMonitorTopAndMid = hs.geometry.rect(0.0,0.0,1,3.0)
 local verticalMonitorMiddle = hs.geometry.rect(0.0,1.0,1,2.0)
 local verticalMonitorBottom = hs.geometry.rect(0.0,3.0,1,4.0)
