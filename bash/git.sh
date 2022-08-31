@@ -10,11 +10,14 @@ alias gc="git checkout"
 alias gs="git status"
 alias gf="git fetch --all --prune"
 
-gr() {
+gr() { # git-reset branch
     [[ $1 == . ]] && current_branch="$(git branch --show-current)" || current_branch=$1
     git reset --hard origin/$current_branch
 }
-gbs() {
+gcm() { # git-commit-msg
+    git commit -m "$*"
+}
+gbs() { # git-branch-search
     git branch -a | grep "$1"
 }
 gpnb() { # git-push-new-branch
