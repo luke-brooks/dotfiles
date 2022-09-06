@@ -6,7 +6,10 @@ source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
 export PS1='[\u@kc \w$(__git_ps1)]\$ '
 
+# https://ohshitgit.com/
+
 alias gc="git checkout"
+alias gc_r="git checkout release_candidate"
 alias gs="git status"
 alias gf="git fetch --all --prune"
 
