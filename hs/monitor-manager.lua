@@ -37,8 +37,7 @@ function determineMonitorConnection ()
     end
 end
 
--- sensing this on config reload severely slows down hammerspoon
--- determineMonitorConnection()
+determineMonitorConnection()
 
 -- monitorWatcher = hs.screen.watcher.new(determineMonitorConnection)
 -- monitorWatcher:start()
