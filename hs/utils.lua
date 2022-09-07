@@ -57,11 +57,12 @@ end
 -- prints all entries of a table, mostly used for debug/dev on hs console
 function printTable (table)
     for key, line in pairs(table) do 
-        print(key)
         if isTable(line) then
+            print(string.format('Start table: %s', key))
             printTable(line)
+            print(string.format('End table: %s', key))
         else
-            print(line)
+            print(string.format("key: %s \t value: %s", key, line))
         end
     end
 end
