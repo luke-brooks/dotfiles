@@ -17,6 +17,7 @@ customRequire('audio-watcher')
 customRequire('battery-watcher')
 customRequire('network-watcher')
 customRequire('custom-menu')
+customRequire('rails-console-clipper')
 
 
 -- not really using the bt stuff right now

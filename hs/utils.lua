@@ -55,8 +55,8 @@ end
 -- *******************
 
 -- prints all entries of a table, mostly used for debug/dev on hs console
-function printTable (table)
-    for key, line in pairs(table) do 
+function printTable (T)
+    for key, line in pairs(T) do 
         if isTable(line) then
             print(string.format('Start table: %s', key))
             printTable(line)
@@ -69,6 +69,21 @@ end
 
 function isTable (obj)
     return type(obj) == 'table'
+end
+
+function tableLength(T)
+    local count = 0
+    for _ in pairs(T) do count = count + 1 end
+    return count
+end
+
+function tableToString(T)
+    local result = ''
+    for key, line in pairs(T) do 
+        -- print('line to concat ' .. line)
+        result = result .. line .. '\n'
+    end
+    return result
 end
 
 -- pause script execution
