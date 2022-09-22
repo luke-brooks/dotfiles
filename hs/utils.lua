@@ -86,6 +86,17 @@ function tableToString(T)
     return result
 end
 
+function splitStringToTable (inputstr, sep)
+    if sep == nil then
+            sep = "%s"
+    end
+    local t={}
+    for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+            table.insert(t, str)
+    end
+    return t
+end
+
 -- pause script execution
 local clock = os.clock
 function sleep(n)  -- 'n' in seconds, can be decimal for partial seconds

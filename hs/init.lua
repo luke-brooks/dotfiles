@@ -17,7 +17,9 @@ customRequire('audio-watcher')
 customRequire('battery-watcher')
 customRequire('network-watcher')
 customRequire('custom-menu')
+customRequire('osa-script-manager')
 customRequire('rails-console-clipper')
+customRequire('emoji-text-converter')
 
 
 -- not really using the bt stuff right now
