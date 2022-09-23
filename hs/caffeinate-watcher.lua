@@ -12,7 +12,7 @@
 --         -- runBlueUtil({bt_connect, logi_mx_mouse_mac})
 --         -- print('screens unlocked ')
 --         -- bluetooth('on')
---         -- reloadMenu()
+--         -- ReloadCustomMenu()
 --     end
 -- end
 
