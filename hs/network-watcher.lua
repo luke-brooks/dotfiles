@@ -1,32 +1,43 @@
+----------------------------
+-- Network Watcher Setup
+----------------------------
+ETHERNET_IP = nil
+IS_ETHERNET_CONNECTED = false
 local ethernetKey = 'State:/Network/Interface/en9/IPv4'
+local ethernetIcon = nil
 
-ethernetIp = nil
-ethernetIcon = nil
-ethernetConnected = false
-
-netConfig = hs.network.configuration.open()
+local netConfig = hs.network.configuration.open()
 netConfig:monitorKeys({ethernetKey}, true)
 
-local function senseEthernet ()
+local function senseEthernet()
     sleep(2) -- pause script to ensure ip has time to get assigned
     -- the # operator gets the length of a table/list, this helps us pull the last entry
-    ethernetIp = hs.network.addresses(ETHERNET_INTERFACE)[#hs.network.addresses(ETHERNET_INTERFACE)]
-    if (ethernetIp ~= nil) then
-        hs.notify.new({title='Ethernet', informativeText=ethernetIp}):send()
-        ethernetConnected = true
+    ETHERNET_IP = hs.network.addresses(ETHERNET_INTERFACE)[#hs.network.addresses(ETHERNET_INTERFACE)]
+    if (ETHERNET_IP ~= nil) then
+        hs.notify.new({
+            title = 'Ethernet',
+            informativeText = ETHERNET_IP
+        }):send()
+        IS_ETHERNET_CONNECTED = true
         ethernetIcon = createIcon(ethernetIcon, ETHERNET_ICON, 'supah fast interwebs')
     else
-        hs.notify.new({title='Ethernet', informativeText='Disconnected'}):send()
-        ethernetConnected = false
+        hs.notify.new({
+            title = 'Ethernet',
+            informativeText = 'Disconnected'
+        }):send()
+        IS_ETHERNET_CONNECTED = false
         ethernetIcon = removeIcon(ethernetIcon)
     end
 end
 
+----------------------------
+-- Script Load Executions
+----------------------------
 senseEthernet()
 
-netConfig:setCallback(function (storeObject, changedKeys)
+netConfig:setCallback(function(storeObject, changedKeys)
     senseEthernet()
-    reloadMenu()
+    ReloadCustomMenu()
 end)
 
 netConfig:start()

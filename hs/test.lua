@@ -1,4 +1,6 @@
-
+----------------------------
+-- Lua Hammerspoon Playground
+----------------------------
 
 hs.hotkey.bind({ 'alt', 'ctrl', 'shift' }, 'h', function()
     hs.printf('testing worked!')

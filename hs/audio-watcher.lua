@@ -1,5 +1,12 @@
+----------------------------
+-- Audio Watcher Setup
+----------------------------
 local headsetIcon = nil
+local watchFor = 'dev#' -- event name used to identify audio device changes
 
+----------------------------
+-- Local Functions
+----------------------------
 local function updateInputSettings(headsetName)
     local builtIn = hs.audiodevice.findInputByUID(LAPTOP_MIC)
     -- local senn_headsetInput = hs.audiodevice.findInputByUID(SENN_MIC)
@@ -26,7 +33,7 @@ local function updateInputSettings(headsetName)
     end
 end
 
-function senseHeadset()
+local function senseHeadset()
     local result = ''
     local headset = ''
 
@@ -50,9 +57,12 @@ function senseHeadset()
     return result
 end
 
+----------------------------
+-- Script Load Executions
+----------------------------
 senseHeadset()
 
-local watchFor = 'dev#'
+-- there is only one audio device watcher instance, you cannot create multiple
 hs.audiodevice.watcher.setCallback(function(watchFor)
     local msg = senseHeadset()
     -- hs.notify.new({

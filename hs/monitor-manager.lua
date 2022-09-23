@@ -1,17 +1,15 @@
 
+----------------------------
+-- Monitor Manager Setup
+----------------------------
 SHARED_VERTICAL_MONITOR = nil -- shared to ensure monitor swaps reach other scripts
-builtInMonitor = nil
-standardMonitor = nil
+local builtInMonitor = nil
+local standardMonitor = nil
 
-function swapMonitorIds ()
-    local temp = STANDARD_MONITOR_DETAILS[1]
-    STANDARD_MONITOR_DETAILS[1] = VERTICAL_MONITOR_DETAILS[1]
-    VERTICAL_MONITOR_DETAILS[1] = temp
-    -- determineMonitorConnection()
-    -- reverseScreenOrder()
-end
-
-function applyMonitorSettings (settings)
+----------------------------
+-- Local Functions
+----------------------------
+local function applyMonitorSettings (settings)
     local monitor = hs.screen.find(settings[1])
     -- setMode can be used to set scaling preference via height & width
     if (monitor ~= nil) then
@@ -22,6 +20,17 @@ function applyMonitorSettings (settings)
         monitor:setMode(settings[3], settings[4], settings[5], settings[6], settings[7])
     end
     return monitor
+end
+
+----------------------------
+-- Shared Functions
+----------------------------
+function swapMonitorIds ()
+    local temp = STANDARD_MONITOR_DETAILS[1]
+    STANDARD_MONITOR_DETAILS[1] = VERTICAL_MONITOR_DETAILS[1]
+    VERTICAL_MONITOR_DETAILS[1] = temp
+    -- determineMonitorConnection()
+    -- reverseScreenOrder()
 end
 
 function determineMonitorConnection ()
@@ -37,6 +46,9 @@ function determineMonitorConnection ()
     end
 end
 
+----------------------------
+-- Script Load Executions
+----------------------------
 determineMonitorConnection()
 
 -- monitorWatcher = hs.screen.watcher.new(determineMonitorConnection)

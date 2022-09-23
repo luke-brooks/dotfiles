@@ -1,5 +1,5 @@
 
-function customRequire(scriptName)
+local function customRequire(scriptName)
     dofile('/Users/LukeBrooks/code/learning-repos/dotfiles/hs/' .. scriptName .. '.lua')
 end
 

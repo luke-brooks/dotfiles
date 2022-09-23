@@ -3,7 +3,7 @@
 ----------------------------
 -- commenting out spoon pkg load for source load
 -- hs.loadSpoon('Zoom')
--- loading straight from Zoom.spoon source for dev purposes
+-- loading straight from Zoom.spoon local source for dev purposes
 local zoom = dofile('/Users/LukeBrooks/code/learning-repos/Zoom.spoon/init.lua')
 
 zoom:setStatusCallback(updatedZoomStatus)

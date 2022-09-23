@@ -1,16 +1,16 @@
 
-customMenu = createIcon(customMenu, MY_HS_ICON, 'beep boop')
+local customMenu = createIcon(customMenu, MY_HS_ICON, 'beep boop')
 
 -- this cannot be local so other scripts can redraw the menu to show checkmarks
-function reloadMenu ()
-    custMenuLayout = {
+function ReloadCustomMenu ()
+    local custMenuLayout = {
         {
             title = 'Ethernet',
-            checked = ethernetConnected,
+            checked = IS_ETHERNET_CONNECTED,
             fn = function()
-                if (ethernetConnected) then
-                    hs.notify.new({title='Ethernet IP', informativeText=ethernetIp}):send() 
-                    hs.pasteboard.setContents(ethernetIp)
+                if (IS_ETHERNET_CONNECTED) then
+                    hs.notify.new({title='Ethernet IP', informativeText=ETHERNET_IP}):send() 
+                    hs.pasteboard.setContents(ETHERNET_IP)
                 end
             end
         },
@@ -70,4 +70,4 @@ function reloadMenu ()
     customMenu:setMenu(custMenuLayout)   
 end
 
-reloadMenu()
+ReloadCustomMenu()

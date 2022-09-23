@@ -1,8 +1,11 @@
--- window manager
+
+----------------------------
+-- Window Manager Setup
+----------------------------
 hs.window.animationDuration = 0
 screenReverse = false -- change naming convention
 
-vertical_monitor = SHARED_VERTICAL_MONITOR
+local vertical_monitor = SHARED_VERTICAL_MONITOR
 
 local verticalMonitorTopAndMid = hs.geometry.rect(0.0, 0.0, 1, 3.0)
 local verticalMonitorMiddle = hs.geometry.rect(0.0, 1.0, 1, 2.0)
@@ -51,7 +54,7 @@ end
 ----------------------------
 function reverseScreenOrder()
     screenReverse = not screenReverse
-    reloadMenu()
+    ReloadCustomMenu()
 end
 
 function configVerticalMonitor(verticalMonitorId)
