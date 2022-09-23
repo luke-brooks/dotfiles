@@ -1,8 +1,46 @@
-
-
+----------------------------
+-- Zoom.spoon Config
+----------------------------
+-- commenting out spoon pkg load for source load
 -- hs.loadSpoon('Zoom')
+-- loading straight from Zoom.spoon source for dev purposes
 local zoom = dofile('/Users/LukeBrooks/code/learning-repos/Zoom.spoon/init.lua')
 
+zoom:setStatusCallback(updatedZoomStatus)
+zoom:start()
+
+----------------------------
+-- Zoom Controls
+----------------------------
+function zoom_FocusWindow()
+    hs.printf('zoom focus priority window')
+    local zoomWindow = zoom:focus()
+    centerMouseCursor(zoomWindow:screen(), zoomWindow)
+end
+function zoom_ToggleAudioMute()
+    hs.printf('zoom toggle audio mute')
+    zoom.audio:toggleMute()
+end
+function zoom_ToggleVideoMute()
+    hs.printf('zoom toggle video mute')
+    zoom.video:toggleMute()
+end
+function zoom_LeaveMeeting()
+    hs.printf('zoom leave meeting')
+    zoom:leaveMeeting()
+end
+function zoom_OpenChat()
+    hs.printf('zoom open chat window')
+    zoom.chat:open()
+end
+function zoom_ShowShareControls()
+    hs.printf('zoom show share controls')
+    zoom.share:showControls()
+end
+
+----------------------------
+-- Construction Zone
+----------------------------
 -- updatedZoomStatus = function(currentState, audio, video)
 --     hs.printf('Zoom App Status is now: %s', currentState)
 --     hs.printf('Zoom Audio is: %s', audio)
@@ -25,32 +63,3 @@ local zoom = dofile('/Users/LukeBrooks/code/learning-repos/Zoom.spoon/init.lua')
 --         }):send()
 --     end
 -- end
-
-zoom:setStatusCallback(updatedZoomStatus)
-zoom:start()
-
-hs.hotkey.bind(MEH, '8', function()
-    hs.printf('zoom focus priority window')
-    local zoomWindow = zoom:focus()
-    centerMouseCursor(zoomWindow:screen(), zoomWindow)
-end)
-hs.hotkey.bind(MEH, '9', function()
-    hs.printf('zoom toggle audio mute')
-    zoom.audio:toggleMute()
-end)
-hs.hotkey.bind(MEH, '0', function()
-    hs.printf('zoom toggle video mute')
-    zoom.video:toggleMute()
-end)
-hs.hotkey.bind(MEH, 'y', function()
-    hs.printf('zoom leave meeting')
-    zoom:leaveMeeting()
-end)
-hs.hotkey.bind(MEH, 'u', function()
-    hs.printf('zoom open chat window')
-    zoom.chat:open()
-end)
-hs.hotkey.bind(MEH, 'i', function()
-    hs.printf('zoom show share controls')
-    zoom.share:showControls()
-end)

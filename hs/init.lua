@@ -3,6 +3,12 @@ function customRequire(scriptName)
     dofile('/Users/LukeBrooks/code/learning-repos/dotfiles/hs/' .. scriptName .. '.lua')
 end
 
+-- notify config load
+hs.notify.new({
+    title = 'Hammerspoon',
+    informativeText = 'Loading Config Breh'
+}):send()
+
 -- import utils & config scripts
 customRequire('utils')
 customRequire('config')
@@ -20,6 +26,7 @@ customRequire('custom-menu')
 customRequire('osa-script-manager')
 customRequire('rails-console-clipper')
 customRequire('emoji-text-converter')
+customRequire('hotkey-manager')
 
 
 -- not really using the bt stuff right now

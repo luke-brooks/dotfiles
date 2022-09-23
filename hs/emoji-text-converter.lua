@@ -60,13 +60,15 @@ local function convertToEmoji(str, light, dark)
     return result
 end
 
-hs.hotkey.bind(HYPER, 'y', function()
+function misc_emojiAsciiArt()
     local emojiPayload = hs.pasteboard.getContents()
-    -- hs.notify.new({title='Emoji ASCII Art', informativeText=test}):send()
+    sleep(.3) -- brief pause to allow unpress of trigger key
+    hs.notify.new({title='Emoji ASCII Art', informativeText=test}):send()
     local split = splitStringToTable(emojiPayload)
 
     local slackText = convertToEmoji(split[1], split[2], split[3])
     hs.pasteboard.setContents(slackText)
     hs.osascript.applescript(force_paste_script)
-end)
+end
+
 
