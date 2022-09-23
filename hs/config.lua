@@ -8,11 +8,15 @@ VPN_PROTOCOL = '/PPP'
 PPP_INTERFACE = 'ppp0'
 ETHERNET_INTERFACE = 'en9'
 
+-- personal device mac addresses
+SEN_HEADPHONES_MAC = '00-16-94-3a-85-49'
+LOGI_MC_MOUSE_MAC = 'c2-75-c5-6b-a6-cd'
+
 -- audio device uids
 LAPTOP_MIC = 'BuiltInMicrophoneDevice'
 WIRELESS_MIC = 'AppleUSBAudioEngine:Antlion Audio:Antlion Wireless Microphone:14123220:1'
-SENN_MIC = '00-16-94-3a-85-49:input'
-SENN_HEADPHONES_UID = '00-16-94-3a-85-49:output'
+SENN_MIC = SEN_HEADPHONES_MAC .. ':input'
+SENN_HEADPHONES_UID = SEN_HEADPHONES_MAC .. ':output'
 SENN_HEADPHONES_NAME = 'HD 4.50BTNC'
 LOGI_HEADSET_OUTPUT = 'AppleUSBAudioEngine:Logitech:Logitech Wireless Headset:C0288D589BCC:2'
 LOGI_HEADSET_INPUT = 'AppleUSBAudioEngine:Logitech:Logitech Wireless Headset:C0288D589BCC:1'
