@@ -83,6 +83,6 @@ pp result
 
 **Limits**
 - Copied payload must start with `irb(*):*:*[>*]` pattern on the first non-empty line of text, otherwise the payload will not be transformed. This is designed to not waste processing time on payloads that might not have any `irb` output in them.
-- Temporary disabling of the payload transform is only possible by running `pasteboardWatcher:stop()` in the Hammerspoon Console; restarting is triggered with `pasteboardWatcher:start()`.
+- Temporary disabling of the payload transform is only possible by running `RailsPasteboardWatcher:stop()` in the Hammerspoon Console; restarting is triggered with `RailsPasteboardWatcher:start()`.
 
 

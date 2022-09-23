@@ -1,6 +1,12 @@
+----------------------------
+-- Rails Console Clipper Setup
+----------------------------
 local irbLinePattern = "irb%(%a*%):%d*:%d*[>*]"
 local skipPayloadEdit = false;
 
+----------------------------
+-- Local Functions
+----------------------------
 local function handlePaste(payload)
     -- print('new paste payload ' .. payload)
     if (not skipPayloadEdit) then
@@ -36,6 +42,8 @@ local function handlePaste(payload)
     end
 end
 
-pasteboardWatcher = hs.pasteboard.watcher.new(handlePaste)
-
-pasteboardWatcher:start()
+----------------------------
+-- Script Load Executions
+----------------------------
+RailsPasteboardWatcher = hs.pasteboard.watcher.new(handlePaste)
+RailsPasteboardWatcher:start()
