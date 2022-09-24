@@ -25,7 +25,7 @@ customRequire('network-watcher')
 customRequire('custom-menu')
 customRequire('osa-script-manager')
 customRequire('rails-console-clipper')
-customRequire('emoji-text-converter')
+customRequire('emoji-ascii-art-converter')
 customRequire('hotkey-manager')
 
 

@@ -34,7 +34,7 @@ asciiMap[" "] = {"0", "0", "0", "0", "0", "0", "0"}
 ----------------------------
 -- Local Functions
 ----------------------------
-local function buildStringFrom(text)
+local function buildAsciiFromText(text)
     local result = ''
     if (not text) then
         return result
@@ -57,8 +57,8 @@ local function buildStringFrom(text)
     return result
 end
 
-local function convertToEmoji(str, light, dark)
-    local result = buildStringFrom(str:lower()):gsub(0, light):gsub(1, dark)
+local function convertToEmoji(str, textFill, backgroundFill)
+    local result = buildAsciiFromText(str:lower()):gsub(1, textFill):gsub(0, backgroundFill)
     return result
 end
 
@@ -66,16 +66,26 @@ end
 -- Shared Functions
 ----------------------------
 function misc_emojiAsciiArt()
+    sleep(.15) -- brief pause to allow unpress of trigger key
+
+    hs.eventtap.keyStroke({'cmd'}, 'a') -- simulate "select all" shortcut
+    hs.eventtap.keyStroke({'cmd'}, 'c') -- simulate "copy" shortcut
+
     local emojiPayload = hs.pasteboard.getContents()
-    sleep(.3) -- brief pause to allow unpress of trigger key
+
+    -- payload will be in the form:
+    -- "message :text_fill_emoji: :bg_fill_emoji:"
+    -- need to add string format validation
+
     hs.notify.new({
         title = 'Emoji ASCII Art',
-        informativeText = test
+        informativeText = emojiPayload
     }):send()
+
     local split = splitStringToTable(emojiPayload)
-
     local slackText = convertToEmoji(split[1], split[2], split[3])
-    hs.pasteboard.setContents(slackText)
-    hs.osascript.applescript(force_paste_script) -- use this instead bro: hs.eventtap.keyStroke({}, 'return')
-end
 
+    hs.pasteboard.setContents(slackText) -- set art payload for delivery
+    hs.eventtap.keyStroke({'cmd'}, 'v') -- simulate "paste" shortcut
+    hs.pasteboard.setContents(emojiPayload) -- reset pasteboard contents to original input
+end
