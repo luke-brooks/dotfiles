@@ -3,6 +3,7 @@
 ----------------------------
 local asciiMap = {}
 
+-- supported alpha characters
 asciiMap["a"] = {"0000", "1111", "1001", "1111", "1001", "1001", "0000"}
 asciiMap["b"] = {"0000", "1111", "1001", "1110", "1001", "1111", "0000"}
 asciiMap["c"] = {"0000", "0111", "1000", "1000", "1000", "0111", "0000"}
@@ -29,7 +30,23 @@ asciiMap["w"] = {"0000000", "1000001", "1000001", "1001001", "1010101", "0100010
 asciiMap["x"] = {"00000", "10001", "01010", "00100", "01010", "10001", "00000"}
 asciiMap["y"] = {"00000", "10001", "01010", "00100", "00100", "00100", "00000"}
 asciiMap["z"] = {"00000", "11111", "00010", "00100", "01000", "11111", "00000"}
+
+-- supported number characters
+asciiMap["0"] = {"0000", "0110", "1001", "1001", "1001", "0110", "0000"} -- equivalent to "O"
+asciiMap["1"] = {"000", "010", "110", "010", "010", "111", "000"}
+asciiMap["2"] = {"0000", "0110", "1001", "0010", "0100", "1111", "0000"}
+asciiMap["3"] = {"0000", "110", "001", "010", "001", "110", "000"}
+asciiMap["4"] = {"0000", "1010", "1010", "1111", "0010", "0010", "0000"}
+asciiMap["5"] = {"000", "111", "100", "111", "001", "111", "000"}
+asciiMap["6"] = {"000", "111", "100", "111", "101", "111", "000"}
+asciiMap["7"] = {"000", "111", "001", "001", "001", "001", "000"}
+asciiMap["8"] = {"0000", "0110", "1001", "0110", "1001", "0110", "0000"}
+asciiMap["9"] = {"000", "111", "101", "111", "001", "001", "000"}
+
+-- other supported characters 
 asciiMap[" "] = {"0", "0", "0", "0", "0", "0", "0"}
+-- add support for select puncuation : . ' " - 
+-- asciiMap["blank starter"] = {"0000", "0000", "0000", "0000", "0000", "0000", "0000"}
 
 ----------------------------
 -- Local Functions
@@ -57,7 +74,7 @@ local function buildAsciiFromText(text)
     return result
 end
 
-local function convertToEmoji(str, textFill, backgroundFill)
+local function convertToEmojiArt(str, textFill, backgroundFill)
     local result = buildAsciiFromText(str:lower()):gsub(1, textFill):gsub(0, backgroundFill)
     return result
 end
@@ -82,8 +99,8 @@ function misc_emojiAsciiArt()
         informativeText = emojiPayload
     }):send()
 
-    local split = splitStringToTable(emojiPayload)
-    local slackText = convertToEmoji(split[1], split[2], split[3])
+    local split = splitStringToTable(emojiPayload) -- this currently doesnt allow spaces in the display text
+    local slackText = convertToEmojiArt(split[1], split[2], split[3])
 
     hs.pasteboard.setContents(slackText) -- set art payload for delivery
     hs.eventtap.keyStroke({'cmd'}, 'v') -- simulate "paste" shortcut
