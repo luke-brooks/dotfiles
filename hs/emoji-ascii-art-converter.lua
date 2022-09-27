@@ -52,6 +52,7 @@ asciiMap['"'] = {'000', '101', '101', '000', '000', '000', '000'}
 asciiMap['('] = {'00', '01', '10', '10', '10', '01', '00'}
 asciiMap[')'] = {'00', '10', '01', '01', '01', '10', '00'}
 asciiMap['-'] = {'000', '000', '000', '111', '000', '000', '000'}
+asciiMap['+'] = {'000', '000', '010', '111', '010', '000', '000'}
 
 ----------------------------
 -- Local Functions
@@ -88,7 +89,7 @@ end
 -- Shared Functions
 ----------------------------
 function misc_emojiAsciiArt()
-    sleep(.15) -- brief pause to allow unpress of trigger key
+    sleep(.05) -- brief pause to allow unpress of trigger key
 
     hs.eventtap.keyStroke({'cmd'}, 'a') -- simulate 'select all' shortcut
     hs.eventtap.keyStroke({'cmd'}, 'c') -- simulate 'copy' shortcut
