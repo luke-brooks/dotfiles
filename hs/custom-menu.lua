@@ -16,10 +16,10 @@ function ReloadCustomMenu ()
         },
         {
             title = 'Temp Key Binding',
-            checked = tempBinding ~= nil,
+            checked = TEMP_APP_HOTKEY_BINDING ~= nil,
             fn = function()
-                if (tempBinding ~= nil) then
-                    local msg = 'Temp binding is set to: ' .. tempBinding:name() .. ' on HYPER + ' .. tempKey
+                if (TEMP_APP_HOTKEY_BINDING ~= nil) then
+                    local msg = 'Temp binding is set to: ' .. TEMP_APP_HOTKEY_BINDING:name() .. ' on HYPER + f'
                     hs.notify.new({title='Temp Key Binding', informativeText=msg}):send()
                 else
                     hs.notify.new({title='Temp Key Binding', informativeText='No App set to temp binding.'}):send()

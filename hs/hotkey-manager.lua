@@ -17,7 +17,7 @@ allHotkeys = {
     -- Temporary App Hotkey
     ----------------------------
     {HYPER, '6', tempApp_SetKeyBinding},
-    {HYPER, tempKey, temp_AppFocus},
+    {HYPER, 'f', tempApp_Focus},
 
     ----------------------------
     -- Window Controls

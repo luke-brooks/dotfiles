@@ -50,19 +50,19 @@ end
 ----------------------------
 -- Temporary App Hotkey
 ----------------------------
-tempBinding = nil
-tempKey = 'f' -- this might need configured in an earlier script in init
+TEMP_APP_HOTKEY_BINDING = nil
 function tempApp_SetKeyBinding()
-    tempBinding = hs.window.focusedWindow():application()
-    local msg = 'Setting temp binding to: ' .. tempBinding:name() .. ' on HYPER + ' .. tempKey
+    TEMP_APP_HOTKEY_BINDING = hs.window.focusedWindow():application()
+    local msg = 'Setting temp binding to: ' .. TEMP_APP_HOTKEY_BINDING:name() .. ' on HYPER + f'
     hs.notify.new({
         title = 'Temp Key Binding',
         informativeText = msg
     }):send()
     ReloadCustomMenu()
 end
-function temp_AppFocus()
-    if (tempBinding ~= nil) then
-        hs.application.launchOrFocus(tempBinding:name())
+function tempApp_Focus()
+    if (TEMP_APP_HOTKEY_BINDING ~= nil) then
+        -- should this focus the cursor too?
+        hs.application.launchOrFocus(TEMP_APP_HOTKEY_BINDING:name())
     end
 end
