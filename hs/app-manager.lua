@@ -1,43 +1,4 @@
 ----------------------------
--- App Manager Setup
-----------------------------
--- i need to refactor this file badly
-local function setAppManagerHotkeys(hotkeys, modifier)
-    for key, app in pairs(hotkeys) do
-        hs.hotkey.bind(modifier, key, function()
-            hs.application.launchOrFocus(app)
-            sleep(0.1)
-            local appInstance = hs.application.find(app)
-            -- poor timing here
-            -- i think the app instance gets populated 
-            -- but the first window isnt ready
-            -- so it throws nil ref errors
-            if (appInstance ~= nil) then
-                centerMouseCursor(appInstance:focusedWindow():screen(), appInstance:focusedWindow())
-            end
-        end)
-    end
-end
-
--- app manager
-local appHyperKeys = {
-    a = 'Slack',
-    s = 'Gmail',
-    d = 'Google Calendar',
-    -- f = 'Something For Notes plz',
-    x = 'iTerm',
-    c = 'Google Chrome',
-    v = 'Code',
-    u = 'Spotify'
-}
-setAppManagerHotkeys(appHyperKeys, HYPER)
-
-local appMehKeys = {
-    e = 'Evernote'
-}
-setAppManagerHotkeys(appMehKeys, MEH)
-
-----------------------------
 -- System Controls
 ----------------------------
 function system_ReloadHsConfig()
@@ -45,6 +6,22 @@ function system_ReloadHsConfig()
 end
 function system_LockScreen()
     hs.caffeinate.lockScreen()
+end
+
+----------------------------
+-- App Manager Setup
+----------------------------
+function myApp_FocusMouse(appName)
+    hs.application.launchOrFocus(appName) -- maybe use .open instead
+    sleep(0.1)
+    local appInstance = hs.application.find(appName)
+    -- poor timing here when launching an app
+    -- i think the app instance gets populated 
+    -- but the first window isnt ready
+    -- so it throws nil ref errors
+    if (appInstance ~= nil) then
+        centerMouseCursor(appInstance:focusedWindow():screen(), appInstance:focusedWindow())
+    end
 end
 
 ----------------------------
