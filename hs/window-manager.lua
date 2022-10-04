@@ -3,7 +3,7 @@
 -- Window Manager Setup
 ----------------------------
 hs.window.animationDuration = 0
-screenReverse = false -- change naming convention
+SHARED_SCREEN_REVEARSE = false -- change naming convention
 
 local vertical_monitor = SHARED_VERTICAL_MONITOR
 
@@ -20,7 +20,7 @@ end
 -- Local Functions
 ----------------------------
 local function openLofiHipHopBrowser()
-    local opera = hs.application.open('Opera', 1)
+    local opera = hs.application.open('Opera', 1, true)
     local lofi = opera:findWindow('lofi hip hop') -- opera is configured to open directly to lofi hip hop URL
     return lofi
 end
@@ -40,9 +40,9 @@ local function windowMoveToScreen(previous)
         return
     end
 
-    if previous and not screenReverse then
+    if previous and not SHARED_SCREEN_REVEARSE then
         handleWindowScreen(win:screen():previous(), win)
-    elseif not previous and screenReverse then
+    elseif not previous and SHARED_SCREEN_REVEARSE then
         handleWindowScreen(win:screen():previous(), win)
     else
         handleWindowScreen(win:screen():next(), win)
@@ -53,21 +53,20 @@ end
 -- Custom Menu Functions
 ----------------------------
 function reverseScreenOrder()
-    screenReverse = not screenReverse
+    SHARED_SCREEN_REVEARSE = not SHARED_SCREEN_REVEARSE
     ReloadCustomMenu()
 end
 
 function configVerticalMonitor(verticalMonitorId)
-    hs.application.launchOrFocus('Stonks')
-    sleep(0.5) -- pause script to ensure apps have loaded
+    local stockApp = hs.application.open('Stonks', 1, true)
     vertical_monitor = hs.screen.find(verticalMonitorId)
 
     if (vertical_monitor ~= nil) then
         hs.grid.setGrid('1x4', vertical_monitor)
-        stockApp = hs.application.find('Stonks')
+        if (stockApp ~= nil) then stockApp = hs.application.find('Stonks') end -- not sure if this could ever be nil but :)
         hs.grid.set(stockApp:mainWindow(), verticalMonitorTopAndMid, vertical_monitor)
 
-        lofi = openLofiHipHopBrowser()
+        local lofi = openLofiHipHopBrowser()
         hs.grid.set(lofi, verticalMonitorBottom, vertical_monitor)
     end
 end

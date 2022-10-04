@@ -9,16 +9,10 @@ function system_LockScreen()
 end
 
 ----------------------------
--- App Manager Setup
+-- App Manager Functions
 ----------------------------
 function myApp_FocusMouse(appName)
-    hs.application.launchOrFocus(appName) -- maybe use .open instead
-    sleep(0.1)
-    local appInstance = hs.application.find(appName)
-    -- poor timing here when launching an app
-    -- i think the app instance gets populated 
-    -- but the first window isnt ready
-    -- so it throws nil ref errors
+    local appInstance = hs.application.open(appName, 1, true)
     if (appInstance ~= nil) then
         centerMouseCursor(appInstance:focusedWindow():screen(), appInstance:focusedWindow())
     end

@@ -52,7 +52,7 @@ function ReloadCustomMenu ()
         },
         {
             title = 'Reverse Screen Order',
-            checked = screenReverse,
+            checked = SHARED_SCREEN_REVEARSE,
             fn = function() 
                 reverseScreenOrder()
             end
