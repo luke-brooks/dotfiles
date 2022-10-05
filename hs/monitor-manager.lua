@@ -15,9 +15,12 @@ local function applyMonitorSettings (settings)
     if (monitor ~= nil) then
         -- these monitor config changes dont seem to hold
         -- they return "false" indicating a failed status change
-        -- im assuming it is due to some sort of permissions error but unsure how to pin it down
+        -- looks like this is a known issue with the underlying API of M1 vs Intel
+        -- https://github.com/Hammerspoon/hammerspoon/issues/3041
         monitor:rotate(settings[2])
         monitor:setMode(settings[3], settings[4], settings[5], settings[6], settings[7])
+        -- might try using this instead
+        -- https://github.com/alin23/Lunar
     end
     return monitor
 end
