@@ -1,3 +1,5 @@
+# install git-completion.bash using:
+# cd ~ && curl -OL https://github.com/git/git/raw/master/contrib/completion/git-completion.bash
 source ~/git-completion.bash
 
 # https://gist.github.com/trey/2722934
