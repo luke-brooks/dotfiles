@@ -7,7 +7,7 @@ url = 'https://bluesight.slack.com/api/users.profile.set'
 mySuperSecretToken = 'none-of-your-beeswax'
 mySuperSecretCookie = 'hands-off-my-cookies'
 
-expiration = time.time() + 240 # add 4 minutes to life of status, ends up closer to 3 minutes when accounting for deliver & processing delays
+expiration = time.time() + 300 # add 5 minutes to life of status, ends up closer to 3 minutes when accounting for deliver & processing delays
 
 print('expiration')
 print(expiration)
