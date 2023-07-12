@@ -19,4 +19,4 @@ alias vsru='code ~/code/registry-ui'
 alias vsps='code ~/code/prod-support'
 alias vsdf='code ~/code/learning-repos/dotfiles'
 # view .bash_profile
-alias vbp='code ~/.bash_profile'
+alias vsbp='code ~/.bash_profile'
