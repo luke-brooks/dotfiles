@@ -1,7 +1,7 @@
 
 local function customRequireAllScripts(scriptTable)
     for index, scriptName in pairs(scriptTable) do
-        hs.printf('Importing Script: %s', scriptName)
+        hs.printf('~~~~~ Importing Script: | %s |', scriptName)
         dofile('/Users/LukeBrooks/code/learning-repos/dotfiles/hs/' .. scriptName .. '.lua')
     end
 end
