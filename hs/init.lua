@@ -1,6 +1,9 @@
 
-local function customRequire(scriptName)
-    dofile('/Users/LukeBrooks/code/learning-repos/dotfiles/hs/' .. scriptName .. '.lua')
+local function customRequireAllScripts(scriptTable)
+    for index, scriptName in pairs(scriptTable) do
+        hs.printf('Importing Script: %s', scriptName)
+        dofile('/Users/LukeBrooks/code/learning-repos/dotfiles/hs/' .. scriptName .. '.lua')
+    end
 end
 
 -- notify config load
@@ -9,29 +12,34 @@ hs.notify.new({
     informativeText = 'Loading Config Breh'
 }):send()
 
--- import utils & config scripts
-customRequire('utils')
-customRequire('config')
-customRequire('icons')
--- import manager scripts
-customRequire('zoom-manager')
-customRequire('app-manager')
-customRequire('monitor-manager')
-customRequire('window-manager')
--- import watcher scripts
-customRequire('audio-watcher')
-customRequire('battery-watcher')
-customRequire('network-watcher')
-customRequire('custom-menu')
-customRequire('osa-script-manager')
-customRequire('rails-console-clipper')
-customRequire('emoji-ascii-art-converter')
-customRequire('hotkey-manager')
+local allScripts = {
+    -- import utils & config scripts
+    'utils',
+    'config',
+    'icons',
 
+    -- import manager scripts
+    'zoom-manager',
+    'app-manager',
+    'monitor-manager',
+    'window-manager',
 
--- not really using the bt stuff right now
--- customRequire('bluetooth-util')
--- customRequire('caffeinate-watcher')
+    -- import watcher scripts
+    -- 'audio-watcher',
+    -- 'battery-watcher',
+    'network-watcher',
+    'custom-menu',
+    'osa-script-manager',
+    'rails-console-clipper',
+    'emoji-ascii-art-converter',
+    'hotkey-manager',
+
+    -- not really using the bt stuff right now
+    -- 'bluetooth-util',
+    -- 'caffeinate-watcher',
+}
+
+customRequireAllScripts(allScripts)
 
 ----------------------------
 -- TODO
