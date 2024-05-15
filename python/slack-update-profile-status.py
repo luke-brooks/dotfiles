@@ -1,4 +1,4 @@
-import requests
+import pip._vendor.requests
 import time
 import json
 import random
@@ -26,7 +26,7 @@ profile = { "status_emoji": ":blunt_parrot:", "status_expiration": expiration, "
 profileJson = json.dumps(profile)
 
 # https://stackoverflow.com/a/12385661/8677309
-session = requests.Session()
+session = pip._vendor.requests.Session()
 response = session.post(url, headers=headers, files=(('profile', (None, profileJson)), ('token', (None, mySuperSecretToken))))
 
 # https://www.jcchouinard.com/python-automation-with-cron-on-mac/#How_to_Schedule_a_Task_With_Cron
