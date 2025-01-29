@@ -25,20 +25,27 @@ local allHotkeys = {
     ----------------------------
     -- My App Hotkeys
     ----------------------------
+    -- mid row
     {HYPER, 'a', myApp_FocusMouse, 'Slack'},
     {HYPER, 's', myApp_FocusMouse, 'Gmail'},
     {HYPER, 'd', myApp_FocusMouse, 'Google Calendar'},
+    {HYPER, 'f', myApp_FocusMouse, 'Notion'},
+    
+    -- bottom row
+    {HYPER, 'z', myApp_FocusMouse, 'Todoist'},
     {HYPER, 'x', myApp_FocusMouse, 'iTerm'},
     {HYPER, 'c', myApp_FocusMouse, 'Google Chrome'},
     {HYPER, 'v', myApp_FocusMouse, 'Code'},
-    {HYPER, 'u', myApp_FocusMouse, 'Spotify'},
+
+    -- top row
+    -- {HYPER, 'u', myApp_FocusMouse, 'Spotify'},
     {MEH, 'e', myApp_FocusMouse, 'Evernote'},
 
     ----------------------------
     -- Temporary App Hotkey
     ----------------------------
-    {HYPER, '6', tempApp_SetKeyBinding},
-    {HYPER, 'f', tempApp_Focus},
+    -- {HYPER, '6', tempApp_SetKeyBinding},
+    -- {HYPER, 'f', tempApp_Focus},
 
     ----------------------------
     -- Window Controls
@@ -57,10 +64,10 @@ local allHotkeys = {
     ----------------------------
     -- Vertical Monitor Grid Controls
     ----------------------------
-    {MEH, '1', vertMonitorGrid_TopAndMid},
-    {MEH, '2', vertMonitorGrid_Bottom},
-    {MEH, '3', vertMonitorGrid_Middle},
-    {MEH, '4', vertMonitorGrid_Top},
+    -- {MEH, '1', vertMonitorGrid_TopAndMid},
+    -- {MEH, '2', vertMonitorGrid_Bottom},
+    -- {MEH, '3', vertMonitorGrid_Middle},
+    -- {MEH, '4', vertMonitorGrid_Top},
 
     ----------------------------
     -- Zoom Controls
@@ -69,8 +76,9 @@ local allHotkeys = {
     {MEH, '9', zoom_ToggleAudioMute},
     {MEH, '0', zoom_ToggleVideoMute},
     {MEH, 'y', zoom_LeaveMeeting},
-    {MEH, 'u', zoom_OpenChat},
-    {MEH, 'i', zoom_ShowShareControls},
+    -- i never use these
+    -- {MEH, 'u', zoom_OpenChat},
+    -- {MEH, 'i', zoom_ShowShareControls},
 
     ----------------------------
     -- Miscellaneous Controls
