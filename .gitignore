@@ -43,3 +43,5 @@ luac.out
 
 bash/aws-ecs-exec.sh
 bash/aws-ecs-exec-console.sh
+
+python/slack-config.txt

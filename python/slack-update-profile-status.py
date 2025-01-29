@@ -5,10 +5,21 @@ import random
 
 # print("hi mom")
 
-url = 'https://bluesight.slack.com/api/users.profile.set'
+workingDir = "/Users/LukeBrooks/code/learning-repos/dotfiles/python/"
 
-mySuperSecretToken = 'none-of-your-beeswax'
-mySuperSecretCookie = 'hands-off-my-cookies'
+url = ""
+mySuperSecretToken = ""
+mySuperSecretCookie = ""
+
+with open(workingDir + "slack-config.txt", "r") as config:
+    for line in config:
+        print(line.strip())
+        parsedLine = json.loads(line.strip())
+        print(parsedLine)
+        url = parsedLine["url"]
+        mySuperSecretToken = parsedLine["token"]
+        mySuperSecretCookie = parsedLine["cookie"]
+
 
 expiration = time.time() + 300 # add 5 minutes to life of status, ends up closer to 3 minutes when accounting for deliver & processing delays
 
