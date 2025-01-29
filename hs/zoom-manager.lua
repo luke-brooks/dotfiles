@@ -6,6 +6,7 @@
 -- loading straight from Zoom.spoon local source for dev purposes
 local zoom = dofile('/Users/LukeBrooks/code/learning-repos/Zoom.spoon/init.lua')
 
+-- zoom:debug()
 zoom:setStatusCallback(updatedZoomStatus)
 zoom:start()
 
@@ -19,11 +20,13 @@ function zoom_FocusWindow()
 end
 function zoom_ToggleAudioMute()
     -- this now has a real hotkey: cmd + shift + a
+    --  but this spoon allows easily changing mute/unmute without having the window focused
     -- hs.printf('zoom toggle audio mute')
     zoom.audio:toggleMute()
 end
 function zoom_ToggleVideoMute()
     -- this now has a real hotkey: cmd + shift + v
+    --  but this spoon allows easily changing mute/unmute without having the window focused
     -- hs.printf('zoom toggle video mute')
     zoom.video:toggleMute()
 end
