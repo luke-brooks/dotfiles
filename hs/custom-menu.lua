@@ -29,12 +29,12 @@ function ReloadCustomMenu ()
         {
             title = "-" -- separator
         },
-        {
-            title = 'Vertical Setup',
-            fn = function() 
-                configVerticalMonitor(VERTICAL_MONITOR_DETAILS[1])
-            end
-        },
+        -- {
+        --     title = 'Vertical Setup',
+        --     fn = function() 
+        --         configVerticalMonitor(VERTICAL_MONITOR_DETAILS[1])
+        --     end
+        -- },
         {
             title = "-" -- separator
         },
@@ -44,15 +44,15 @@ function ReloadCustomMenu ()
                 determineMonitorConnection()
             end
         },
-        {
-            title = 'Swap Monitors',
-            fn = function() 
-                swapMonitorIds()
-            end
-        },
+        -- {
+        --     title = 'Swap Monitors',
+        --     fn = function() 
+        --         swapMonitorIds()
+        --     end
+        -- },
         {
             title = 'Reverse Screen Order',
-            checked = SHARED_SCREEN_REVEARSE,
+            checked = SHARED_SCREEN_REVERSE,
             fn = function() 
                 reverseScreenOrder()
             end

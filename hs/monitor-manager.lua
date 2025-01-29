@@ -2,9 +2,10 @@
 ----------------------------
 -- Monitor Manager Setup
 ----------------------------
-SHARED_VERTICAL_MONITOR = nil -- shared to ensure monitor swaps reach other scripts
+-- SHARED_VERTICAL_MONITOR = nil -- shared to ensure monitor swaps reach other scripts
 local builtInMonitor = nil
-local standardMonitor = nil
+-- local standardMonitor = nil
+local curvedMonitor = nil
 
 ----------------------------
 -- Local Functions
@@ -28,21 +29,22 @@ end
 ----------------------------
 -- Shared Functions
 ----------------------------
-function swapMonitorIds ()
-    local temp = STANDARD_MONITOR_DETAILS[1]
-    STANDARD_MONITOR_DETAILS[1] = VERTICAL_MONITOR_DETAILS[1]
-    VERTICAL_MONITOR_DETAILS[1] = temp
-    -- determineMonitorConnection()
-    -- reverseScreenOrder()
-end
+-- function swapMonitorIds ()
+--     local temp = STANDARD_MONITOR_DETAILS[1]
+--     STANDARD_MONITOR_DETAILS[1] = VERTICAL_MONITOR_DETAILS[1]
+--     VERTICAL_MONITOR_DETAILS[1] = temp
+--     -- determineMonitorConnection()
+--     -- reverseScreenOrder()
+-- end
 
 function determineMonitorConnection ()
     local allScreens = hs.screen.allScreens()
-    if (#allScreens > 1) then -- this condition still triggers when laptop is connected to monitors, but kvm is pointing both to the desktop comp
+    -- hs.printf('~~~~~ Importing Script: | %s |', scriptName)
+    if (#allScreens == 2) then
         hs.notify.new({title='Monitors', informativeText='Full Monitor Setup'}):send()
         builtInMonitor = applyMonitorSettings(BUILT_IN_DETAILS)
-        standardMonitor = applyMonitorSettings(STANDARD_MONITOR_DETAILS)
-        SHARED_VERTICAL_MONITOR = applyMonitorSettings(VERTICAL_MONITOR_DETAILS)
+        curvedMonitor = applyMonitorSettings(CURVED_MONITOR_DETAILS)
+        -- SHARED_VERTICAL_MONITOR = applyMonitorSettings(VERTICAL_MONITOR_DETAILS)
     else
         hs.notify.new({title='Monitors', informativeText='Laptop Only'}):send()
         builtInMonitor = applyMonitorSettings(BUILT_IN_ONLY)
