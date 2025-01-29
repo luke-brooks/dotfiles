@@ -41,3 +41,5 @@ luac.out
 
 .DS_Store
 
+bash/aws-ecs-exec.sh
+bash/aws-ecs-exec-console.sh
