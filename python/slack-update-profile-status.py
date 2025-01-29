@@ -3,6 +3,8 @@ import time
 import json
 import random
 
+# print("hi mom")
+
 url = 'https://bluesight.slack.com/api/users.profile.set'
 
 mySuperSecretToken = 'none-of-your-beeswax'
@@ -18,8 +20,9 @@ quotes = [
     "Drugs are bad mmkay.", # south park
     "This is, like, the apex of the vortex of joint engineering.", # pineapple express
     "If you were yogurt, would you be fruit at the bottom or stirred?", # bio-dome
+    "Not my chair, not my problem", # that stoned dude from the old-ass youtube video
 ]
-rand_int = random.randint(0, len(quotes))
+rand_int = random.randint(0, len(quotes) - 1)
 random_quote = quotes[rand_int]
 
 profile = { "status_emoji": ":blunt_parrot:", "status_expiration": expiration, "status_text": random_quote, "status_text_canonical": "" }
@@ -28,6 +31,8 @@ profileJson = json.dumps(profile)
 # https://stackoverflow.com/a/12385661/8677309
 session = pip._vendor.requests.Session()
 response = session.post(url, headers=headers, files=(('profile', (None, profileJson)), ('token', (None, mySuperSecretToken))))
+
+# print(response.text) # debug http response
 
 # https://www.jcchouinard.com/python-automation-with-cron-on-mac/#How_to_Schedule_a_Task_With_Cron
 # cron schedule (minute hour dayOfMonth month dayOfWeek)
