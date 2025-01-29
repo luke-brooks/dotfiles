@@ -13,30 +13,36 @@ zoom:start()
 -- Zoom Controls
 ----------------------------
 function zoom_FocusWindow()
-    hs.printf('zoom focus priority window')
+    -- hs.printf('zoom focus priority window')
     local zoomWindow = zoom:focus()
     centerMouseCursor(zoomWindow:screen(), zoomWindow)
 end
 function zoom_ToggleAudioMute()
-    hs.printf('zoom toggle audio mute')
+    -- this now has a real hotkey: cmd + shift + a
+    -- hs.printf('zoom toggle audio mute')
     zoom.audio:toggleMute()
 end
 function zoom_ToggleVideoMute()
-    hs.printf('zoom toggle video mute')
+    -- this now has a real hotkey: cmd + shift + v
+    -- hs.printf('zoom toggle video mute')
     zoom.video:toggleMute()
 end
 function zoom_LeaveMeeting()
-    hs.printf('zoom leave meeting')
+    -- hs.printf('zoom leave meeting')
     zoom:leaveMeeting()
 end
-function zoom_OpenChat()
-    hs.printf('zoom open chat window')
-    zoom.chat:open()
-end
-function zoom_ShowShareControls()
-    hs.printf('zoom show share controls')
-    zoom.share:showControls()
-end
+
+----------------------------
+-- Unused
+----------------------------
+-- function zoom_OpenChat()
+--     -- hs.printf('zoom open chat window')
+--     zoom.chat:open()
+-- end
+-- function zoom_ShowShareControls()
+--     -- hs.printf('zoom show share controls')
+--     zoom.share:showControls()
+-- end
 
 ----------------------------
 -- Construction Zone
